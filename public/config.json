@@ -1,0 +1,106 @@
+{
+  "workflowApiVersion": "1.1",
+  "key" : "1bb14dae-f1bc-48f0-af48-1975ff15ce2c",
+  "metaData": {
+      "icon": "images/icon.png",
+      "iconSmall": "images/iconSmall.png",
+      "category": "message"
+  },
+  "type": "REST",
+  "lang": {
+      "en-US": {
+          "name": "Journey Builder Final",
+        "description": "custom Journey Builder",
+        "step1Label": "Configure Activity"
+      }
+  },
+  "arguments": {
+      "execute": {
+         "inArguments":[
+           {
+             "Promocion":"{{Contact.Attribute.chatbotCustomers.Promocion}}"
+           },
+           {
+             "Phone":"{{Contact.Attribute.chatbotCustomers.Phone2}}"
+           },
+           {
+             "Nombre":"{{Contact.Attribute.chatbotCustomers.Nombre}}"
+           }
+
+         ],
+        "outArguments": [],
+        "url": "https://sfmc-custom-activity-hexagon.herokuapp.com/journeybuilder/execute",
+         "verb": "POST",
+         "body": "",
+          "useJwt": true,
+          "timeout": 10000
+      }
+  },
+  "configurationArguments": {
+    "applicationExtensionKey": "1bb14dae-f1bc-48f0-af48-1975ff15ce2c",
+    "save": {
+      "url": "https://sfmc-custom-activity-hexagon.herokuapp.com/journeybuilder/save",
+        "verb": "POST",
+        "body": "",
+      "useJwt": true
+     },
+     "publish": {
+      "url": "https://sfmc-custom-activity-hexagon.herokuapp.com/journeybuilder/publish",
+         "verb": "POST",
+         "body": "",
+      "useJwt": true
+     },
+    "stop": {
+      "url": "https://sfmc-custom-activity-hexagon.herokuapp.com/journeybuilder/stop",
+         "verb": "POST",
+         "body": "",
+      "useJwt": true
+    },
+    "validate": {
+      "url": "https://sfmc-custom-activity-hexagon.herokuapp.com/journeybuilder/validate",
+      "verb": "POST",
+      "body": "",
+      "useJwt": true
+    }
+  },
+  "wizardSteps": [
+      { "label": "Configure Activity", "key": "step1" }
+  ],
+  "userInterfaces": {
+      "configModal": {
+          "height": 400,
+          "width": 1000,
+        "fullscreen": false
+      }
+  },
+  "schema": {
+      "arguments": {
+          "execute": {
+              "inArguments": [  
+                  {
+                  "Promocion": {
+                    "dataType": "String",
+                    "isNullable": false,
+                    "direction": "out"   
+                  }
+
+                  },
+                  {
+                    "Phone": {
+                      "dataType": "String",
+                      "isNullable": false,
+                      "direction": "out"   
+                    }
+                    },
+                    {
+                      "Nombre": {
+                        "dataType": "String",
+                        "isNullable": false,
+                        "direction": "out"   
+                      }
+                      }],
+              "outArguments": []
+          }
+      }
+  }
+}
